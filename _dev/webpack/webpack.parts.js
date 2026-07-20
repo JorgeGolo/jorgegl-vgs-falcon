@@ -1,12 +1,12 @@
-const chokidar = require('chokidar');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const path = require('path');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const FontPreloadPlugin = require('webpack-font-preload-plugin');
+const chokidar = require('chokidar')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const path = require('path')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const FontPreloadPlugin = require('webpack-font-preload-plugin')
 
 exports.configureDevServer = (serverAddress, publicPath, port, siteURL) => ({
-  allowedHosts: [ serverAddress ],
+  allowedHosts: [serverAddress],
   host: serverAddress,
   client: {
     logging: 'error',
@@ -19,13 +19,14 @@ exports.configureDevServer = (serverAddress, publicPath, port, siteURL) => ({
   devMiddleware: {
     publicPath: publicPath,
     writeToDisk: (filePath) => {
-      return !(/hot-update/.test(filePath));
+      return !/hot-update/.test(filePath)
     },
   },
   headers: {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
-    'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    'Access-Control-Allow-Headers':
+      'X-Requested-With, content-type, Authorization',
   },
   hot: true,
   liveReload: true,
@@ -41,51 +42,54 @@ exports.configureDevServer = (serverAddress, publicPath, port, siteURL) => ({
       target: siteURL,
       secure: false,
       changeOrigin: true,
-    }
+    },
   },
   static: {
     publicPath: publicPath,
   },
-});
+})
 
-exports.extractScss = ({mode = 'production'}) => ({
+exports.extractScss = ({ mode = 'production' }) => ({
   module: {
-    rules: [{
-      test: /\.scss$/,
-      use: [
-        MiniCssExtractPlugin.loader,
-        'css-loader',
-        {
-          loader: 'postcss-loader',
-          options: {
-            postcssOptions: {
-              config: path.resolve(__dirname, 'postcss.config.js'),
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                config: path.resolve(__dirname, 'postcss.config.js'),
+              },
             },
-          }
-        },
-        {
-          loader: 'sass-loader',
-          options: {
-            implementation: require('sass'),
           },
-        },
-      ]
-    }]
+          {
+            loader: 'sass-loader',
+            options: {
+              implementation: require('sass'),
+            },
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'css/[name].css',
-      chunkFilename: mode === 'production' ? 'css/[chunkhash].css' : 'css/[id].css',
+      chunkFilename:
+        mode === 'production' ? 'css/[chunkhash].css' : 'css/[id].css',
     }),
   ],
-});
+})
 
 exports.extractJs = () => ({
   module: {
     rules: [
       {
         test: /swiper\.esm\.js/,
-        sideEffects: false
+        sideEffects: false,
       },
       {
         test: /\.js$/,
@@ -93,13 +97,13 @@ exports.extractJs = () => ({
         use: {
           loader: 'esbuild-loader',
           options: {
-            target: 'es2015'
-          }
-        }
+            target: 'es2015',
+          },
+        },
       },
-    ]
-  }
-});
+    ],
+  },
+})
 
 exports.extractImages = ({ publicPath }) => ({
   module: {
@@ -118,8 +122,8 @@ exports.extractImages = ({ publicPath }) => ({
         ],
         type: 'javascript/auto',
       },
-    ]
-  }
+    ],
+  },
 })
 
 exports.extractFonts = ({ publicPath }) => ({
@@ -138,9 +142,9 @@ exports.extractFonts = ({ publicPath }) => ({
           },
         ],
         type: 'javascript/auto',
-      }
-    ]
-  }
+      },
+    ],
+  },
 })
 
 exports.extractVendorsChunks = () => ({
@@ -152,7 +156,7 @@ exports.extractVendorsChunks = () => ({
           name: 'swipervendor',
           filename: 'js/swipervendor.js',
           chunks: 'initial',
-        }
+        },
       },
     },
   },
@@ -167,18 +171,18 @@ exports.cleanDistFolders = () => ({
         path.join(__dirname, '../../assets/js/**'),
         path.join(__dirname, '../../assets/css/**'),
         path.join(__dirname, '../../assets/img-dist/**'),
-        path.join(__dirname, '../../assets/fonts/**')
+        path.join(__dirname, '../../assets/fonts/**'),
       ],
     }),
-  ]
+  ],
 })
 
 exports.externals = () => ({
   externals: {
     prestashop: 'prestashop',
     $: '$',
-    jquery : 'jQuery'
-  }
+    jquery: 'jQuery',
+  },
 })
 
 exports.preloadFonts = () => ({
@@ -191,26 +195,23 @@ exports.preloadFonts = () => ({
     new FontPreloadPlugin({
       index: 'preload.html',
       extensions: ['woff2'],
-      filter: /(materialicons|roboto-v20-latin-ext_latin-regular|roboto-v20-latin-ext_latin-700|roboto-v20-latin-ext_latin-500|icomoon)/i,
+      filter:
+        /(materialicons|montserrat-v31-latin-regular|montserrat-v31-latin-700|montserrat-v31-latin-600|montserrat-v31-latin-500|icomoon)/i,
       replaceCallback: ({ indexSource, linksAsString }) => {
-        return indexSource.replace('{{{preloadLinks}}}', linksAsString);
+        return indexSource.replace('{{{preloadLinks}}}', linksAsString)
       },
     }),
-  ]
+  ],
 })
 
 exports.resolve = () => ({
   resolve: {
-    modules: [
-      'node_modules',
-      path.resolve('node_modules')
-    ],
+    modules: ['node_modules', path.resolve('node_modules')],
     alias: {
       '@node_modules': path.resolve(__dirname, '../node_modules'),
       '@themeAbstract': path.resolve(__dirname, '../css/abstracts'),
       '@css': path.resolve(__dirname, '../css'),
       '@js': path.resolve(__dirname, '../js'),
-    }
+    },
   },
-});
-
+})
