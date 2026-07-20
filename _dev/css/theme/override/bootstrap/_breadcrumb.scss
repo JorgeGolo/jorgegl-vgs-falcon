@@ -26,7 +26,23 @@
   }
 }
 
-.breadcrumb-item + .breadcrumb-item::before {
-  display: inline-block;
-  float: none;
+.breadcrumb-item + .breadcrumb-item {
+  padding-left: 1em; // antes del chevron
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-image: url('../img/icons/breadcrumb-chevron.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    float: none;
+    padding-right: 1em; // después del chevron
+  }
+}
+
+.breadcrumb-item.active {
+  color: $primary;
 }

@@ -1,4 +1,23 @@
 .breadcrumb-wrapper {
   width: 100%;
   background-color: $secondary; // pendiente el hex exacto del Figma
+  font-size: $font-size-sm;
+}
+
+.breadcrumb {
+  padding: 0.75rem 0;
+}
+
+.breadcrumb-item a {
+  color: $primary;
+}
+
+.breadcrumb-home-icon {
+  display: inline-block;
+  width: 16px; // ajusta al tamaño real del icono en Figma
+  height: 16px;
+  background-image: url('../img/icons/breadcrumb-home.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  vertical-align: middle;
 }

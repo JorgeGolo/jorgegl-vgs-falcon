@@ -55,10 +55,16 @@
         {/block}
 
         {hook h="displayWrapperTop"}
+
+        <div class="breadcrumb-wrapper">
+          <div class="container">
+            {block name='breadcrumb'}
+              {include file='_partials/breadcrumb.tpl'}
+            {/block}
+          </div>
+        </div>
+
         <div class="container">
-          {block name='breadcrumb'}
-            {include file='_partials/breadcrumb.tpl'}
-          {/block}
 
           <div class="row">
             {block name="left_column"}

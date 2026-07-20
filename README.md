@@ -95,6 +95,10 @@ _TODO — se documentará según se vaya desarrollando, por ejemplo:_
 
 - Estructura SCSS por componentes. Al maquetar la ficha de producto, se detectó que el tema ya organiza sus estilos en carpetas por componente, cada una con un \_index.scss que reexporta sus partials (p. ej. product-gallery/, product-variants/). Para mantener esa convención, la información propia del título de producto se ha añadido en una nueva carpeta product-info/, siguiendo el mismo patrón (\_index.scss + archivo(s) de propiedad), en vez de añadir el estilo como un bloque suelto en el archivo raíz.
 
+- Variables de colores: se han sobreescrito variables de colores en themes\jorgegl-vgs-falcon_dev\css\abstracts\variables\bootstrap_colors.scss para reutilizarlas y ser fiel al diseño del Figma
+
+- Se han descargado iconos del Figma en formato SVG para utilizarlos dentro del tema.
+
 ## 🐛 Dificultades encontradas
 
 Surgieron problemas típicos durante la instalación, todos resueltos:

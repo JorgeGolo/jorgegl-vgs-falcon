@@ -34,7 +34,11 @@
                 {if !$smarty.foreach.breadcrumb.last}
                   <a href="{$path.url}">
                 {/if}
+                {if $smarty.foreach.breadcrumb.first}
+                  <span class="breadcrumb-home-icon" aria-hidden="true"></span>
+                {else}
                   {$path.title}
+                {/if}
                 {if !$smarty.foreach.breadcrumb.last}
                   </a>
                 {/if}

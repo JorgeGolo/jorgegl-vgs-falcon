@@ -14,6 +14,8 @@ assets/js/*
 assets/fonts/*
 !assets/fonts/.gitkeep
 assets/preload.html
+assets/img-dist/*
+!assets/img-dist/.gitkeep
 
 # Entorno local
 .env
