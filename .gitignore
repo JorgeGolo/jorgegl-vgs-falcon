@@ -1,0 +1,21 @@
+# Dependencias
+_dev/node_modules/
+node_modules/
+
+# Cache de Webpack / build tools
+_dev/cache/
+.cache/
+
+# Assets compilados (regenerables con npm run build)
+assets/css/*
+assets/js/*
+!assets/css/.gitkeep
+!assets/js/.gitkeep
+
+# Entorno local
+.env
+.env.local
+
+# Sistema
+.DS_Store
+Thumbs.db
