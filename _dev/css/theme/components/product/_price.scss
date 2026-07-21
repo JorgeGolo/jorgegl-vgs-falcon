@@ -4,6 +4,8 @@
   color: $quaternary;
 
   &--regular {
+    //font-size: 24px;
+    @include font-size($h3-font-size);
     font-weight: 400;
     color: $text-muted;
     text-decoration: line-through;

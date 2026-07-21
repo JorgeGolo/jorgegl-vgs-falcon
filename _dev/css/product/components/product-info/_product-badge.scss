@@ -1,0 +1,18 @@
+.price-container {
+  display: flex;
+  align-items: baseline; // Alinea verticalmente al centro el precio, tachado y badge
+  justify-content: flex-start; // Todo alineado a la izquierda
+  gap: $spacer * 1; // O un valor fijo como 8px / 12px
+}
+
+.badge-discount {
+  @include font-size($h4-font-size);
+  color: $quaternary;
+  background-color: rgba(
+    $quaternary,
+    0.1
+  ); // Usando la variable base con transparencia
+  font-weight: 500; // Generalmente equivale a 500
+  border-radius: 999px; // Para el efecto redondeado completo (999px)
+  padding: ($spacer * 0.9) ($spacer * 2); // Equivale aprox a 6px 14px si el spacer es 16px
+}

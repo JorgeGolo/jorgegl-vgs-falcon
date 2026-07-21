@@ -4,7 +4,7 @@
   display: block;
   text-transform: uppercase;
   font-size: 0.9375rem;
-  border-radius: $rounded-pill;
+  border-radius: calc(infinity * 1px);
   font-weight: bold;
   padding: 0.8em 3em;
 }

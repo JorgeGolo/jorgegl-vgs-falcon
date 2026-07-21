@@ -1,0 +1,46 @@
+.shipping-delivery-note {
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  line-height: 1.2; // Ajusta la altura de línea para que no desplace el texto
+
+  // Pseudo-elemento ::before con la misma técnica del chevron
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 24px; // Ancho del icono de envío/camión
+    height: 24px; // Alto del icono
+    margin-right: 0.5rem; // Margen entre el icono y el texto
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    flex-shrink: 0; // Evita que el SVG se deforme en pantallas pequeñas
+  }
+
+  .shipping-delivery-note__text {
+    margin-top: $spacer * 0.3;
+  }
+
+  // Estado: Disponible (Cómpralo ahora...)
+  &--available {
+    background-color: rgba($quaternary, 0.08);
+    color: $quaternary;
+
+    &::before {
+      background-image: url('../img/icons/delivery.svg'); // Tu SVG del camión/envío
+    }
+  }
+
+  // Estado: Pocas unidades
+  &--warning {
+    background-color: rgba($warning, 0.1);
+    color: darken($warning, 15%);
+  }
+
+  // Estado: Agotado
+  &--unavailable {
+    background-color: rgba($danger, 0.1);
+    color: $danger;
+  }
+}
