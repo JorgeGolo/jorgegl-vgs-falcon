@@ -1,0 +1,11 @@
+// 1. Definición de placeholders genéricos
+%label-uppercase {
+  font-weight: 600;
+  color: $primary;
+  text-transform: uppercase;
+}
+
+%value-text {
+  font-weight: 500;
+  color: $gray-900;
+}

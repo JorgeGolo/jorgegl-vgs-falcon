@@ -1,0 +1,14 @@
+.bg-green-light {
+  background-color: rgba(186, 228, 235, 0.2);
+}
+
+.feature-label {
+  @extend %label-uppercase;
+}
+
+.feature-value {
+  font-size: 14px;
+  font-weight: 400;
+  color: $gray-900;
+  margin-left: 1rem;
+}
