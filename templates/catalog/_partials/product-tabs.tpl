@@ -1,5 +1,5 @@
 {block name='product_tabs'}
-  <div class="product-info-sections my-4">
+  <div class="product-info-sections">
     
     {* 1. Descripción del producto *}
     {if $product.description}

@@ -1,4 +1,4 @@
-@use "sass:map";
+@use 'sass:map';
 
 .l-footer {
   padding-top: map.get($spacers, 5);
@@ -9,5 +9,18 @@
   padding-top: map.get($spacers, 5);
   padding-bottom: map.get($spacers, 2);
   margin-top: map.get($spacers, 5);
-  background: $gray-100;
+  background: $primary;
+  color: white;
+  font-size: 15px;
+  font-weight: normal;
+}
+
+.footer-container a {
+  color: white;
+}
+
+.footer-container .h4 {
+  font-size: 19px;
+  color: $secondary;
+  text-transform: uppercase;
 }
