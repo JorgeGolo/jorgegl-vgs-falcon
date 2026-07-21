@@ -67,13 +67,40 @@
               <h1 class="h1 product-title">{block name='page_title'}{$product.name}{/block}</h1>
             {/block}
           {/block}
-          {block name='product_prices'}
-            {include file='catalog/_partials/product-prices.tpl'}
-          {/block}
+
 
           <div class="product-information ">
             {block name='product_description_short'}
               <div id="product-description-short-{$product.id}" class="product-description cms-content">{$product.description_short nofilter}</div>
+            {/block}
+
+            {block name='product_summary_info'}
+              <div class="product-summary-info">
+                {if isset($product_manufacturer->id)}
+                  <div class="product-summary-info__item">
+                    <span class="product-summary-info__label">{l s='Marca' d='Shop.Theme.Catalog'}:</span>
+                    <span class="product-summary-info__value">{$product_manufacturer->name}</span>
+                  </div>
+                {/if}
+
+                {if isset($product.reference_to_display) && $product.reference_to_display neq ''}
+                  <div class="product-summary-info__item">
+                    <span class="product-summary-info__label">{l s='Referencia' d='Shop.Theme.Catalog'}:</span>
+                    <span class="product-summary-info__value">{$product.reference_to_display}</span>
+                  </div>
+                {/if}
+
+                {if $product.show_availability}
+                  <div class="product-summary-info__item">
+                    <span class="product-summary-info__label">{l s='Disponibilidad' d='Shop.Theme.Catalog'}:</span>
+                    <span class="product-summary-info__value">{$product.availability_message}</span>
+                  </div>
+                {/if}
+              </div>
+            {/block}
+
+            {block name='product_prices'}
+              {include file='catalog/_partials/product-prices.tpl'}
             {/block}
 
             {if $product.is_customizable && count($product.customizations.fields)}

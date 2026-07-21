@@ -48,7 +48,7 @@
 
         <div class="add col mt-2 px-1">
           <button
-            class="btn btn-primary add-to-cart btn-block"
+            class="btn add-to-cart"
             data-button-action="add-to-cart"
             type="submit"
             {if !$product.add_to_cart_url}

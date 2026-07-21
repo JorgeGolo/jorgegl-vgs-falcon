@@ -99,6 +99,8 @@ _TODO — se documentará según se vaya desarrollando, por ejemplo:_
 
 - Se han descargado iconos del Figma en formato SVG para utilizarlos dentro del tema.
 
+- Se ha comentado parte del código de dentro del div con clase tax-shipping-delivery-label para no mostrar la etiqeuta de impuestos, como en Figma
+
 ## 🐛 Dificultades encontradas
 
 Surgieron problemas típicos durante la instalación, todos resueltos:

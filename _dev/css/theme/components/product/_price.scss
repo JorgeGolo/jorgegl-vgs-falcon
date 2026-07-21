@@ -1,7 +1,7 @@
 .price {
   @include font-size($font-size-lg);
   font-weight: 700;
-  color: $primary;
+  color: $quaternary;
 
   &--regular {
     font-weight: 400;
@@ -10,7 +10,7 @@
   }
 
   &--lg {
-    @include font-size($h2-font-size);
+    @include font-size($display1-size);
   }
 
   &--sm {

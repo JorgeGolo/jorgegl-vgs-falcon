@@ -15,7 +15,12 @@ assets/fonts/*
 !assets/fonts/.gitkeep
 assets/preload.html
 assets/img-dist/*
-!assets/img-dist/.gitkeep
+!assets/img-dist/.gitkeep# ... existing code ...
+
+# Sistema
+.DS_Store
+Thumbs.db
+DOCPDF.pdf
 
 # Entorno local
 .env
