@@ -29,6 +29,5 @@
 }
 
 .product-summary-info__value {
-  color: $gray-900;
-  font-weight: 500;
+  @extend %value-text;
 }

@@ -1,89 +1,54 @@
 {block name='product_tabs'}
-  <div class="card product-tabs">
-    <div class="card-header">
-      <ul class="nav nav-tabs card-header-tabs" role="tablist">
-        {if $product.description}
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              data-toggle="tab"
-              href="#description"
-              role="tab"
-              aria-controls="description"
-              >{l s='Description' d='Shop.Theme.Catalog'}</a>
-          </li>
-        {/if}
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            data-toggle="tab"
-            href="#product-details"
-            role="tab"
-            aria-controls="product-details"
-            >{l s='Product Details' d='Shop.Theme.Catalog'}</a>
-        </li>
-        {if $product.attachments}
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              data-toggle="tab"
-              href="#attachments"
-              role="tab"
-              aria-controls="attachments">{l s='Attachments' d='Shop.Theme.Catalog'}</a>
-          </li>
-        {/if}
-        {foreach from=$product.extraContent item=extra key=extraKey}
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              data-toggle="tab"
-              href="#extra-{$extraKey}"
-              role="tab"
-              aria-controls="extra-{$extraKey}">{$extra.title}</a>
-          </li>
-        {/foreach}
-      </ul>
-    </div>
-
-    <div class="card-body">
-      <div class="tab-content" id="tab-content">
-        <div class="tab-pane fade in" id="description" role="tabpanel">
-          {block name='product_description'}
-            {cms_images_block webpEnabled=$webpEnabled}
-              <div class="product-description cms-content">{$product.description nofilter}</div>
-            {/cms_images_block}
-          {/block}
-        </div>
-
-        {block name='product_details'}
-          {include file='catalog/_partials/product-details.tpl'}
-        {/block}
-
-        {block name='product_attachments'}
-          {if $product.attachments}
-          <div class="tab-pane fade in" id="attachments" role="tabpanel">
-              <section class="product-attachments">
-                <p class="h5 text-uppercase">{l s='Download' d='Shop.Theme.Actions'}</p>
-                {foreach from=$product.attachments item=attachment}
-                  <div class="attachment">
-                    <h4><a href="{url entity='attachment' params=['id_attachment' => $attachment.id_attachment]}">{$attachment.name}</a></h4>
-                    <p>{$attachment.description}</p>
-                    <a href="{url entity='attachment' params=['id_attachment' => $attachment.id_attachment]}">
-                      {l s='Download' d='Shop.Theme.Actions'} ({$attachment.file_size_formatted})
-                    </a>
-                  </div>
-                {/foreach}
-              </section>
+  <div class="product-info-sections my-4">
+    
+    {* 1. Descripción del producto *}
+    {if $product.description}
+      <section class="product-description-section my-5">
+        <h3 class="h4 text-primary mb-3">
+          {l s='Información del producto' d='Shop.Theme.Catalog'}
+        </h3>
+        {block name='product_description'}
+          {cms_images_block webpEnabled=$webpEnabled}
+            <div class="product-description cms-content pt-4">
+              {$product.description nofilter}
             </div>
-          {/if}
+          {/cms_images_block}
         {/block}
+      </section>
+    {/if}
 
-        {foreach from=$product.extraContent item=extra key=extraKey}
-        <div class="tab-pane fade in {$extra.attr.class} cms-content" id="extra-{$extraKey}" role="tabpanel" {foreach $extra.attr as $key => $val} {$key}="{$val}"{/foreach}>
+    {* 2. Ficha técnica / Detalles *}
+    {block name='product_details'}
+      {include file='catalog/_partials/product-details.tpl'}
+    {/block}
+
+    {* 3. Adjuntos / Descargas *}
+    {block name='product_attachments'}
+      {if $product.attachments}
+        <section class="product-attachments-section my-4">
+          <h4 class="h5 text-uppercase mb-3">{l s='Download' d='Shop.Theme.Actions'}</h4>
+          {foreach from=$product.attachments item=attachment}
+            <div class="attachment mb-2">
+              <h5><a href="{url entity='attachment' params=['id_attachment' => $attachment.id_attachment]}">{$attachment.name}</a></h5>
+              <p>{$attachment.description}</p>
+              <a href="{url entity='attachment' params=['id_attachment' => $attachment.id_attachment]}" class="btn btn-sm btn-outline-primary">
+                {l s='Download' d='Shop.Theme.Actions'} ({$attachment.file_size_formatted})
+              </a>
+            </div>
+          {/foreach}
+        </section>
+      {/if}
+    {/block}
+
+    {* 4. Módulos extra (extraContent) *}
+    {foreach from=$product.extraContent item=extra key=extraKey}
+      <section class="product-extra-section my-4 {$extra.attr.class}">
+        <h4 class="h5 text-uppercase mb-3">{$extra.title}</h4>
+        <div class="cms-content">
           {$extra.content nofilter}
         </div>
-        {/foreach}
-      </div>
-    </div>
+      </section>
+    {/foreach}
+
   </div>
 {/block}

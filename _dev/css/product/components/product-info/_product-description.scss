@@ -1,0 +1,40 @@
+.product-description-section,
+.product-info-sections {
+  h4,
+  .h4 {
+    font-weight: 600;
+    @include font-size($h3-font-size);
+  }
+}
+
+.product-description-section .cms-content {
+  border-top: 1px solid $secondary;
+}
+
+.product-description-section .cms-content p {
+  line-height: 2;
+}
+
+.accent-parr {
+  font-weight: 600;
+  color: $quaternary;
+  display: flex; // Ayuda a alinear perfectamente el icono con el texto
+  align-items: center;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 1.2rem; // Ajusta el ancho del icono
+    height: 1.2rem; // Ajusta el alto del icono
+    margin-right: 0.8rem; // Separa el icono del texto
+
+    // Carga de tu archivo SVG local (ajusta la ruta según la ubicación de tu archivo SCSS)
+    background-color: $quaternary;
+    -webkit-mask-image: url('../img/icons/violet-check.svg');
+    mask-image: url('../img/icons/violet-check.svg');
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+  }
+}

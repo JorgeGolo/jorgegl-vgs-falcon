@@ -26,8 +26,9 @@
   {if !$configuration.is_catalog}
 
     {block name='product_quantity'}
-      <div class="product-quantity row mb-1 mx-n1 mt-n2 align-items-center">
-        <div class="qty col-12 col-sm-auto mx-auto mt-2 px-1">
+      <div class="product-quantity d-flex align-items-center mb-2">
+        <span class="quantity-label text-nowrap">{l s='Quantity' d='Shop.Theme.Actions'}</span>
+        <div class="qty">
           <input
             type="number"
             name="qty"
@@ -46,7 +47,7 @@
           >
         </div>
 
-        <div class="add col mt-2 px-1">
+        <div class="add flex-grow-1">
           <button
             class="btn add-to-cart"
             data-button-action="add-to-cart"
@@ -71,28 +72,44 @@
     {/block}
 
     {block name='product_availability'}
-      <span id="product-availability" class="js-product-availability">
+      <div id="product-availability" class="js-product-availability">
         {if $product.show_availability && $product.availability_message}
-          <span
+          <div
             {if $product.availability == 'available'}
-              class="badge badge-success py-1 mb-1"
+              class="shipping-delivery-note shipping-delivery-note--available p-3 mt-4 mb-3"
             {elseif $product.availability == 'last_remaining_items'}
-              class="badge badge-warning py-1 mb-1"
+              class="shipping-delivery-note shipping-delivery-note--warning p-3 mt-4 mb-3"
             {else}
-                class="badge badge-danger py-1 mb-1"
+              class="shipping-delivery-note shipping-delivery-note--unavailable p-3 mt-4 mb-3"
             {/if}
           >
-          {if $product.availability == 'available'}
-            <i class="material-icons rtl-no-flip font-reset align-bottom">&#xE5CA;</i>
-          {elseif $product.availability == 'last_remaining_items'}
-            <i class="material-icons font-reset align-bottom">&#xE002;</i>
-          {else}
-            <i class="material-icons font-reset align-bottom">&#xE14B;</i>
-          {/if}
-          {$product.availability_message}
-          </span>
+            <span class="shipping-delivery-note__text">
+              {l s='Cómpralo ahora y recíbelo mañana' d='Shop.Theme.Actions'}
+            </span>
+          </div>
         {/if}
-      </span>
+      </div>
+    {/block}
+        
+    {block name='product_features'}
+      {if !empty($product.features) || !empty($product.grouped_features)}
+        {assign var="features_list" value=$product.grouped_features|default:$product.features}
+        
+        <div class="product-features-grid border my-4 overflow-hidden">
+          <div class="row no-gutters">
+            {foreach from=$features_list item=feature name=features}
+              <div class="col-12 col-md-6 d-flex align-items-center p-2 {if $smarty.foreach.features.index % 4 == 2 || $smarty.foreach.features.index % 4 == 3}bg-green-light{/if}">
+                <span class="feature-label" style="min-width: 140px;">
+                  {$feature.name}
+                </span>
+                <span class="feature-value">
+                  {$feature.value|escape:'htmlall'|nl2br nofilter}
+                </span>
+              </div>
+            {/foreach}
+          </div>
+        </div>
+      {/if}
     {/block}
 
     {block name='product_minimal_quantity'}
