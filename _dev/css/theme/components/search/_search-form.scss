@@ -1,8 +1,8 @@
-@use "sass:map";
+@use 'sass:map';
 
 .search-form {
   position: relative;
-  max-width: rem-calc(620px);
+  max-width: rem-calc(563px);
   margin: 0 auto;
 
   &__form-group {
@@ -16,17 +16,22 @@
 
   &__input {
     height: $search-input-height;
-    padding: 0 rem-calc(70px) 0 rem-calc(30px);
+    padding: 0 10px 0 10px;
     line-height: $search-input-height;
-    color: $gray-900;
-    border-width: 1px;
-    border-radius: 99em;
+    color: $primary;
+    border-width: 2px;
+    border-color: $primary;
+    font-size: 12px;
+    /*border-radius: 99em;*/
 
     &:focus {
       background: $gray-100;
       box-shadow: none;
     }
 
+    &::placeholder {
+      font-weight: 600;
+    }
   }
 
   &__btn {
@@ -36,7 +41,9 @@
     bottom: 0;
     padding: 0 map.get($spacers, 3);
     line-height: 1;
-    color: $primary;
+    background-color: $primary;
+    color: white;
+    font-weight: 500;
   }
 }
 

@@ -103,6 +103,7 @@ _TODO — se documentará según se vaya desarrollando, por ejemplo:_
 - Se ha establecido la mianiatura de la categoría como icono que aparece junto al h1 de la cabecera.
 - Se han comentado bloques en los tpl en lugar de eliminarlos.
 - Se ha editado buena parte del CSS de la lista de cateogrías y filtros en los archivos `css\theme\override\bootstrap\_card.scss`, y en `\css\theme\components\category\_category-filters.scss`. En ocasiones, los estilos podían modificarse en otros archivos, usar clases Tailwind en el tpl o hacer overrides de Bootstrap. Se ha optado por una vía más o menos coherente en todo el proyecto. Quedaría pendiente de revisar si se puede optimizar para mayor escalabilidad.
+- Se ha movido el menú al hook DisplayNavFullWidth apra que tenga el mismo aspecto que en Figma, ya que compartía hook con el carrito, el buscador... Así mismo, se ha modificado `theme.yml` para que el tema instale el menú en ese hook
 
 ## 🐛 Dificultades encontradas
 

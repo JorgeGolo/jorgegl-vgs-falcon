@@ -73,6 +73,7 @@ global_settings:
         - is_searchbar
         - ps_customersignin
         - is_shoppingcart
+      displayNavFullWidth:
         - ps_mainmenu
       displayHome:
         - is_imageslider
