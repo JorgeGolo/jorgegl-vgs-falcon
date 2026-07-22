@@ -1,13 +1,67 @@
+#left-column #search_filters .card-header .card-title {
+  border-top: 1px solid $secondary;
+  border-bottom: 0;
+  padding-top: 2rem;
+}
 .card {
-  &--secondary {
-    border: 0;
+  // Estilos específicos cuando la tarjeta está en las columnas laterales
+  #left-column &,
+  #right-column & {
+    border: none;
+
+    .card-header {
+      background: none;
+      padding: 0 1rem;
+      border: none;
+
+      .card-title {
+        font-weight: 700;
+        @include font-size($h4-font-size);
+        padding: 1.5rem 0 1.5rem 0;
+        color: $primary;
+        border-bottom: 1px solid $secondary;
+      }
+    }
+
+    // --- BLOQUE INTEGRADO DE BÚSQUEDA POR FACETAS ---
+    .search-filters {
+      @include media-breakpoint-down(sm) {
+        border-radius: 0;
+      }
+
+      &__title {
+        color: $quaternary;
+        font-weight: 600;
+        @include font-size($font-size-base);
+      }
+
+      &__header {
+        padding-top: 1.5rem;
+        border-top: 1px solid $secondary;
+      }
+    }
+
+    .search-filters__slider {
+      padding: 1em 0;
+      .form-control {
+        border: 0;
+      }
+    }
+  }
+
+  .list-group-flush {
+    border-bottom: 1px solid $secondary;
+    border-top: 1px solid $secondary;
+  }
+
+  .list-group-flush > .list-group-item {
+    border: none;
+    padding: 0.5rem 1rem;
+    font-weight: 400;
   }
 }
 
-.card-body + .card-body {
-  border-top: $card-border-width solid $card-border-color;
-}
-
+// Estilos de tarjetas agrupadas en vertical
 .card-group-vertical {
   > .card {
     &:not(:first-child) {

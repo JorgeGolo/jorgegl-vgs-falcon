@@ -1,0 +1,12 @@
+#category {
+  #left-column {
+    // No tocamos márgenes ni bordes del contenedor de la rejilla
+
+    .sidebar-wrapper {
+      border: 1px solid $secondary;
+      border-radius: $border-radius;
+      background-color: #fff;
+      padding: 0 0.8rem;
+    }
+  }
+}
