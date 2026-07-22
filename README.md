@@ -101,6 +101,8 @@ _TODO — se documentará según se vaya desarrollando, por ejemplo:_
 - Se ha mantenido el archivo original `product-tabs.tpl` renombrado a `product-tabs-riginal.tpl` para mostrar sólo la descirpción larga, y en su contenido, se ha añadiudo una clase para maquetar parte del text.
 - Lo mismo para el archivo `category-header.tpl`.
 - Se ha establecido la mianiatura de la categoría como icono que aparece junto al h1 de la cabecera.
+- Se han comentado bloques en los tpl en lugar de eliminarlos.
+- Se ha editado buena parte del CSS de la lista de cateogrías y filtros en los archivos `css\theme\override\bootstrap\_card.scss`, y en `\css\theme\components\category\_category-filters.scss`. En ocasiones, los estilos podían modificarse en otros archivos, usar clases Tailwind en el tpl o hacer overrides de Bootstrap. Se ha optado por una vía más o menos coherente en todo el proyecto. Quedaría pendiente de revisar si se puede optimizar para mayor escalabilidad.
 
 ## 🐛 Dificultades encontradas
 

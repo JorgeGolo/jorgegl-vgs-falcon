@@ -33,15 +33,17 @@
       </div>
       <div class="list-group list-group-flush">
         {block name='facets_clearall_button'}
+          {* ELIMINADO  botón de borrar todo
           {if $activeFilters|count}
             <div class="clear-all-wrapper card-body">
               <button data-search-url="{$clear_all_link}"
-                class="btn btn-sm btn-block btn-outline-secondary btn-sm js-search-filters-clear-all">
+                class="btn btn-sm btn-block btn-outline-secondary btn-close-filter btn-sm js-search-filters-clear-all">
                 <i class="material-icons font-reset mr-1 align-middle">&#xE14C;</i>
                 {l s='Clear all' d='Shop.Theme.Actions'}
               </button>
             </div>
           {/if}
+          *}
         {/block}
         {foreach from=$displayedFacets item="facet"}
 
@@ -116,53 +118,48 @@
                 </div>
               {/block}
 
-            {elseif $facet.widgetType == 'slider'}
-              {block name='facet_item_slider'}
-                {foreach from=$facet.filters item="filter"}
-
-                  <div class="py-1 {if $filter@first}pt-2{/if}">
-                    <div id="facet_{$_expand_id}" class="search-filters__slider">
-                      <div class="js-input-range-slider-container">
-                        <div class="js-range-slider mt-1" data-slider-min="{$facet.properties.min}"
-                          data-slider-max="{$facet.properties.max}" data-slider-id="{$_expand_id}"
-                          data-slider-values="{$filter.value|@json_encode}" data-slider-unit="{$facet.properties.unit}"
-                          data-slider-label="{$facet.label}"
-                          data-slider-specifications="{$facet.properties.specifications|@json_encode}"
-                          data-slider-encoded-url="{$filter.nextEncodedFacetsURL}" id="slider-range_{$_expand_id}"></div>
-                        <div class="d-flex mt-3 mx-n2">
-                          <div class="px-2 search-filters__input-group">
-                            <input
-                              class="js-input-range-slider form-control form-control-sm text-center search-filters__input"
-                              type="text"
-                              {if $facet.filters.0.value}
-                                value="{$facet.filters.0.value.0}"
-                              {else}
-                                value="{$facet.properties.min}"
-                              {/if}
-                              data-unit="{$facet.properties.unit}"
-                              data-action="range-from"
-                              >
-                          </div>
-                          <div class="px-2 ml-auto search-filters__input-group">
-                            <input
-                              class="js-input-range-slider form-control form-control-sm text-center search-filters__input"
-                              type="text"
-                              {if $facet.filters.0.value}
-                                value="{$facet.filters.0.value.1}"
-                              {else}
-                                value="{$facet.properties.max}"
-                              {/if}
-                              data-unit="{$facet.properties.unit}"
-                              data-action="range-to"
-                              >
-                          </div>
-                        </div>
+          {elseif $facet.widgetType == 'slider'}
+            {block name='facet_item_slider'}
+              {assign var="filter" value=$facet.filters.0}
+              <div class="py-1 pt-2">
+                <div id="facet_{$_expand_id}" class="search-filters__slider">
+                  <div class="js-input-range-slider-container">
+                    <div class="js-range-slider mt-1" 
+                      data-slider-min="{$facet.properties.min}"
+                      data-slider-max="{$facet.properties.max}" 
+                      data-slider-id="{$_expand_id}"
+                      data-slider-values="{$filter.value|@json_encode}" 
+                      data-slider-unit="{$facet.properties.unit}"
+                      data-slider-label="{$facet.label}"
+                      data-slider-specifications="{$facet.properties.specifications|@json_encode}"
+                      data-slider-encoded-url="{$filter.nextEncodedFacetsURL}" 
+                      id="slider-range_{$_expand_id}"></div>
+                    
+                    <div class="d-flex mt-1 mx-n2">
+                      <div class="px-2 search-filters__input-group">
+                        <input
+                          class="js-input-range-slider form-control form-control-sm text-center search-filters__input"
+                          type="text"
+                          value="{if isset($filter.value.0)}{$filter.value.0}{else}{$facet.properties.min}{/if}"
+                          data-unit="{$facet.properties.unit}"
+                          data-action="range-from"
+                        >
+                      </div>
+                      <div class="px-2 ml-auto search-filters__input-group">
+                        <input
+                          class="js-input-range-slider form-control form-control-sm text-center search-filters__input"
+                          type="text"
+                          value="{if isset($filter.value.1)}{$filter.value.1}{else}{$facet.properties.max}{/if}"
+                          data-unit="{$facet.properties.unit}"
+                          data-action="range-to"
+                        >
                       </div>
                     </div>
                   </div>
-                {/foreach}
-              {/block}
-            {/if}
+                </div>
+              </div>
+            {/block}
+          {/if}
           </section>
         {/foreach}
 

@@ -8,6 +8,7 @@
             value="{if isset($product.product_attribute_minimal_quantity) && $product.product_attribute_minimal_quantity != ''}{$product.product_attribute_minimal_quantity}{else}{$product.minimal_quantity}{/if}"
             class="form-control input-qty"
           >
+          {*
           <button
             class="btn btn-primary btn-block add-to-cart"
             data-button-action="add-to-cart"
@@ -18,6 +19,7 @@
           >
             {l s='Add to cart' d='Shop.Theme.Actions'}
           </button>
+          *}
       </form>
     {else}
         <a href="{$product.canonical_url}"

@@ -4,7 +4,7 @@
     {block name='list_group_header'}
       <div class="card-header">
         {block name='list_group_title' hide}
-          <p class="card-title h5 mb-0">
+          <p class="card-title h5 mb-2">
             {$smarty.block.child}
           </p>
         {/block}

@@ -37,12 +37,12 @@
 
       &__header {
         padding-top: 1.5rem;
+        padding-bottom: 1em;
         border-top: 1px solid $secondary;
       }
     }
 
     .search-filters__slider {
-      padding: 1em 0;
       .form-control {
         border: 0;
       }
@@ -52,6 +52,25 @@
   .list-group-flush {
     border-bottom: 1px solid $secondary;
     border-top: 1px solid $secondary;
+  }
+
+  a.list-group-item {
+    display: flex;
+    align-items: center; // Centrado vertical perfecto
+    justify-content: space-between; // Empuja la flecha al extremo derecho
+    width: 100%;
+    padding: 0.5rem 1rem; // Ajusta el padding deseado
+    color: inherit;
+
+    &::after {
+      content: '\E315'; // Unicode chevron_right de Material Icons
+      font-family: 'Material Icons';
+      font-size: 1.2rem;
+      line-height: 1; // Clave para evitar saltos de altura vertical
+      display: inline-flex;
+      align-items: center;
+      color: $gray-600; // Ajusta el color deseado
+    }
   }
 
   .list-group-flush > .list-group-item {

@@ -31,9 +31,13 @@
 {block name='content'}
   <section id="main">
 
-    {block name='product_list_header'}
-      <h1 id="js-product-list-header" class="h2">{$listing.label}</h1>
-    {/block}
+    
+     {block name='product_list_header'}
+        {if $page.page_name !== 'category'}
+          <h1 id="js-product-list-header" class="h2">{$listing.label}</h1>
+        {/if}
+      {/block}
+    
 
     {block name='subcategory_list'}
       {*

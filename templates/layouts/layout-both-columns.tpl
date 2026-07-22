@@ -74,13 +74,17 @@
 
           <div class="row">
             {block name="left_column"}
-              <div id="left-column" class="col-12 col-md-4 col-lg-3">
+<div id="left-column" class="col-12 col-md-4 col-lg-3">
+  
+  <!-- NUEVO WRAPPER INTERNO -->
+  <div class="sidebar-wrapper">
                 {if $page.page_name == 'product'}
                   {hook h='displayLeftColumnProduct' product=$product category=$category}
                 {else}
                   {hook h="displayLeftColumn"}
                 {/if}
               </div>
+                            </div>
             {/block}
 
             {block name="content_wrapper"}

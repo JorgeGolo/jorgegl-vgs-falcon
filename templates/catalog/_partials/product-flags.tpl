@@ -23,9 +23,12 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 {block name='product_flags'}
-    <ul class="product-flags d-flex flex-column position-absolute w-100 pe-none">
-        {foreach from=$product.flags item=flag}
-            <li class="product-flags__flag rounded product-flags__flag--{$flag.type}">{$flag.label}</li>
-        {/foreach}
-    </ul>
+        <ul class="product-flags d-flex flex-column position-absolute w-100 pe-none">
+            {foreach from=$product.flags item=flag}
+            {* Añadido codicional para no mostrar descuentos *}
+              {if $flag.type!=="discount"}
+                <li class="product-flags__flag rounded product-flags__flag--{$flag.type}">{$flag.label}</li>
+                {/if}
+            {/foreach}
+        </ul>
 {/block}

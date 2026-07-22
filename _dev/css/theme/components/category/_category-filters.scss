@@ -1,0 +1,33 @@
+#js-active-search-filters {
+  .active-filters-title {
+    color: $semi-light;
+    font-size: $font-size-base;
+    line-height: 1.2;
+    font-weight: 600;
+  }
+
+  .active-filter-item {
+    .btn {
+      border-radius: 50rem;
+      padding: 0.5rem 0.85rem;
+      font-size: 14px;
+      color: $primary;
+      border-color: rgba($primary, 0.4);
+      background-color: transparent;
+
+      &:hover {
+        background-color: rgba($primary, 0.05);
+        color: darken($primary, 10%);
+      }
+
+      // Estilo directo para la cruz en el span
+      .close-filter {
+        font-size: 1.6em; // Un tamaño equilibrado para el botón
+        line-height: 0.8; // Evita que la "x" empuje la altura del botón
+        font-weight: 700;
+        display: inline-block;
+        padding: 0 0.5em;
+      }
+    }
+  }
+}

@@ -1,18 +1,21 @@
 .price {
   @include font-size($font-size-lg);
   font-weight: 700;
-  color: $quaternary;
+  color: $primary;
+  margin-right: 0.75rem;
 
   &--regular {
     //font-size: 24px;
-    @include font-size($h3-font-size);
+    @include font-size($font-size-lg);
     font-weight: 400;
     color: $text-muted;
     text-decoration: line-through;
+    margin-right: 0.75rem;
   }
 
   &--lg {
     @include font-size($display1-size);
+    color: $quaternary;
   }
 
   &--sm {

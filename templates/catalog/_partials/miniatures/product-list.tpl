@@ -27,7 +27,7 @@
   <div
     class="products-list__block products-list__block--list"
     >
-    <article class="product-miniature card js-product-miniature p-2 h-100 {block name='product_miniature_item_class'}{/block}" data-id-product="{$product.id_product}" data-id-product-attribute="{$product.id_product_attribute}">
+    <article class="product-miniature card js-product-miniature h-100 {block name='product_miniature_item_class'}{/block}" data-id-product="{$product.id_product}" data-id-product-attribute="{$product.id_product_attribute}">
 
       <div class="row">
         <div class="col-md-4 col-lg-3">
