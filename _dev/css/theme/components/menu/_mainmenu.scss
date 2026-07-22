@@ -1,4 +1,4 @@
-@use "sass:map";
+@use 'sass:map';
 
 .main-menu {
   $self: &;
@@ -12,7 +12,8 @@
   }
 
   &__dropdown {
-    margin: -#{$modal-inner-padding} -#{$modal-inner-padding} map.get($spacers, 3);
+    margin: -#{$modal-inner-padding} -#{$modal-inner-padding}
+      map.get($spacers, 3);
     border-bottom: 1px solid $border-color;
     @include media-breakpoint-up(md) {
       position: relative;
@@ -44,16 +45,17 @@
     }
 
     &--top {
-      @include font-size($font-size-lg);
-      font-weight: 700;
-      color: $gray-900;
+      @include font-size($font-size-base);
+      font-weight: 600;
+      color: white;
+      text-transform: uppercase;
 
       @include hover-focus() {
         text-decoration: none;
       }
 
       @include media-breakpoint-up(md) {
-        padding: map.get($spacers, 3) map.get($spacers, 4);
+        padding: 10px;
       }
     }
 
@@ -88,7 +90,6 @@
         padding-left: map.get($spacers, 2);
       }
     }
-
   }
 
   &__item {
