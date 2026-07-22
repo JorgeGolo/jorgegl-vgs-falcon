@@ -22,16 +22,26 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-<div id="js-product-list-header">
-    <div class="block-category">
-        <h1 class="h1">
-            {$category.name}
-            {if $listing.pagination.items_shown_from !== 1}
-                {l s='- page' d='Shop.Theme.Catalog'} {$listing.pagination.current_page}
-            {/if}
-        </h1>
-        {if $category.description && $listing.pagination.items_shown_from == 1}
-            <div id="category-description" class="cms-content">{$category.description nofilter}</div>
-        {/if}
+<div id="js-product-list-header" class="category-header-fullwidth">
+  {if $category.image.large.url}
+    <div class="category-cover">
+      <picture>
+        <img src="{$category.image.large.url}" alt="{$category.name}" class="img-fluid w-100">
+      </picture>
     </div>
+  {/if}
+
+  <div class="category-title-banner">
+    <div class="container d-flex align-items-center">
+      
+      {* Miniatura del icono *}
+      {if !empty($category.image.small.url)}
+        <div class="category-header-icon mr-1">
+          <img src="{$category.image.small.url}" alt="{$category.name}" class="img-fluid">
+        </div>
+      {/if}
+
+      <h1 class="h1 text-uppercase mb-0">{$category.name}</h1>
+    </div>
+  </div>
 </div>

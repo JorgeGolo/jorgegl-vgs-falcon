@@ -93,12 +93,14 @@ _TODO — se documentará según se vaya desarrollando, por ejemplo:_
 - Uso de variables Bootstrap/Falcon en vez de `!important`.
 - Tratamiento de combinaciones de producto (JS nativo vs. lógica ya provista por `is_shoppingcart`).
 - Estructura SCSS por componentes. Al maquetar la ficha de producto, se detectó que el tema ya organiza sus estilos en carpetas por componente, cada una con un `\_index.scss` que reexporta sus partials (p. ej. product-gallery/, product-variants/). Para mantener esa convención, la información propia del título de producto se ha añadido en una nueva carpeta `product-info/`, siguiendo el mismo patrón (`\_index.scss` + archivo(s) de propiedad), en vez de añadir el estilo como un bloque suelto en el archivo raíz.
-- Variables de colores: se han sobreescrito variables de colores en `themes\jorgegl-vgs-falcon_dev\css\abstracts\variables\bootstrap_colors.scss` para reutilizarlas y ser fiel al diseño del Figma
+- Variables de colores: se han sobreescrito variables de colores en `_dev\css\abstracts\variables\bootstrap_colors.scss` para reutilizarlas y ser fiel al diseño del Figma
 - Se han descargado iconos del Figma en formato SVG para utilizarlos dentro del tema.
 - Se ha comentado parte del código de dentro del div con clase tax-shipping-delivery-label para no mostrar la etiqeuta de impuestos, como en Figma
 - Se ha usado placeholders de CSS y es posible que se pueda usar más esta funcionalidad para ahorrar código, si se siguen repitiendo estilos
 - La estructura de anidamiento de SCSS ha resultado quizá demasiado compleja. La idea sería refactorizar una vez se hayan terminado todos los cambios, decidiendo previamente si se prefiere una estructura más atómica o menos.
 - Se ha mantenido el archivo original `product-tabs.tpl` renombrado a `product-tabs-riginal.tpl` para mostrar sólo la descirpción larga, y en su contenido, se ha añadiudo una clase para maquetar parte del text.
+- Lo mismo para el archivo `category-header.tpl`.
+- Se ha establecido la mianiatura de la categoría como icono que aparece junto al h1 de la cabecera.
 
 ## 🐛 Dificultades encontradas
 

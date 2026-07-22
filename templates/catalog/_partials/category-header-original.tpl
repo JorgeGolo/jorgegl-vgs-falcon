@@ -22,8 +22,17 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-{extends file='catalog/listing/product-list.tpl'}
+<div id="js-product-list-header">
+    <div class="block-category">
+        <h1 class="h1">
+            {$category.name}
+            {if $listing.pagination.items_shown_from !== 1}
+                {l s='- page' d='Shop.Theme.Catalog'} {$listing.pagination.current_page}
+            {/if}
+        </h1>
+        {if $category.description && $listing.pagination.items_shown_from == 1}
+            <div id="category-description" class="cms-content">{$category.description nofilter}</div>
+        {/if}
+    </div>
+</div>
 
-{block name='product_list_footer'}
-    {include file='catalog/_partials/category-footer.tpl' listing=$listing category=$category}
-{/block}
