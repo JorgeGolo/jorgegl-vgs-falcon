@@ -71,46 +71,52 @@
 
     {/block}
 
-    {block name='product_availability'}
-      <div id="product-availability" class="js-product-availability">
-        {if $product.show_availability && $product.availability_message}
-          <div
-            {if $product.availability == 'available'}
-              class="shipping-delivery-note shipping-delivery-note--available p-3 mt-4 mb-3"
-            {elseif $product.availability == 'last_remaining_items'}
-              class="shipping-delivery-note shipping-delivery-note--warning p-3 mt-4 mb-3"
-            {else}
-              class="shipping-delivery-note shipping-delivery-note--unavailable p-3 mt-4 mb-3"
-            {/if}
-          >
-            <span class="shipping-delivery-note__text">
-              {l s='Cómpralo ahora y recíbelo mañana' d='Shop.Theme.Actions'}
-            </span>
-          </div>
-        {/if}
-      </div>
-    {/block}
-        
-    {block name='product_features'}
-      {if !empty($product.features) || !empty($product.grouped_features)}
-        {assign var="features_list" value=$product.grouped_features|default:$product.features}
-        
-        <div class="product-features-grid border my-4 overflow-hidden">
-          <div class="row no-gutters">
-            {foreach from=$features_list item=feature name=features}
-              <div class="col-12 col-md-6 d-flex align-items-center p-2 {if $smarty.foreach.features.index % 4 == 2 || $smarty.foreach.features.index % 4 == 3}bg-green-light{/if}">
-                <span class="feature-label" style="min-width: 140px;">
-                  {$feature.name}
-                </span>
-                <span class="feature-value">
-                  {$feature.value|escape:'htmlall'|nl2br nofilter}
-                </span>
-              </div>
-            {/foreach}
-          </div>
+{block name='product_availability'}
+  <div id="product-availability" class="js-product-availability">
+    {if $product.show_availability && $product.availability_message}
+      {if $product.availability == 'available' || $product.availability == 'last_remaining_items'}
+        <div
+          {if $product.availability == 'available'}
+            class="shipping-delivery-note shipping-delivery-note--available p-3 mt-3 mb-3"
+          {else}
+            class="shipping-delivery-note shipping-delivery-note--warning p-3 mt-4 mb-3"
+          {/if}
+        >
+          <span class="shipping-delivery-note__text">
+            {l s='Cómpralo ahora y recíbelo mañana' d='Shop.Theme.Actions'}
+          </span>
+        </div>
+      {elseif $product.availability == 'unavailable'}
+        <div class="shipping-delivery-note shipping-delivery-note--unavailable p-3 mt-4 mb-3">
+          <span class="shipping-delivery-note__text">
+            {$product.availability_message} {* Muestra el texto dinámico de PrestaShop (ej: "Agotado") *}
+          </span>
         </div>
       {/if}
-    {/block}
+    {/if}
+  </div>
+{/block}
+  {block name='product_features'}
+    {if $product.grouped_features}
+      <section class="product-features my-3">
+        {*<p class="h6">{l s='Data sheet' d='Shop.Theme.Catalog'}</p>*}
+        
+        <div class="row no-gutters product-features-grid">
+          {foreach from=$product.grouped_features item=feature}
+            <div class="col-12 col-md-6 d-flex align-items-center p-2 feature-item">
+              <span class="feature-label" style="min-width: 140px;">
+                {$feature.name}
+              </span>
+              <span class="feature-value">
+                {$feature.value|escape:'htmlall'|nl2br nofilter}
+              </span>
+            </div>
+          {/foreach}
+        </div>
+
+      </section>
+    {/if}
+  {/block}
 
     {block name='product_minimal_quantity'}
       <div class="product-minimal-quantity js-product-minimal-quantity">

@@ -1,0 +1,21 @@
+.page-item {
+  border: 1px solid $secondary;
+}
+
+.page-link-next {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem; // Espacio entre el texto "Siguiente" y el icono
+
+  &::after {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    // Inyectas aquí tu SVG (ejemplo con flecha estándar)
+    background-image: url('../img/icons/arrow-right.svg'); // Tu SVG del camión/envío
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+}

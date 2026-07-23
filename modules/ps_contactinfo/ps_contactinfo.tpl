@@ -1,4 +1,4 @@
-<div class="col-md-5 col-12 mb-lg-4 footer-contact-info d-flex flex-column justify-content-end">
+<div class="col-md-5 col-12 mb-lg-4 footer-contact-info d-flex flex-column justify-content-end py-4">
 
   {* Mantenemos el contenedor colapsable si quieres soporte móvil o renderizado directo *}
   <div class="footer-contact-list">

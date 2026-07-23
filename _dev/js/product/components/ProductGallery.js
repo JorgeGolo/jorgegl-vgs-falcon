@@ -5,43 +5,44 @@ class ProductGallery {
     modalSliderSelector = '.js-modal-gallery',
     galleryModalSelector = '.js-product-images-modal',
   } = {}) {
-    this.thumbsSliderSelector = thumbsSliderSelector;
-    this.mainSliderSelector = mainSliderSelector;
-    this.modalSliderSelector = modalSliderSelector;
-    this.galleryModalSelector = galleryModalSelector;
-    this.mainSliderSwiperInstance = null;
-    this.modalSliderSwiperInstance = null;
+    this.thumbsSliderSelector = thumbsSliderSelector
+    this.mainSliderSelector = mainSliderSelector
+    this.modalSliderSelector = modalSliderSelector
+    this.galleryModalSelector = galleryModalSelector
+    this.mainSliderSwiperInstance = null
+    this.modalSliderSwiperInstance = null
   }
 
   init() {
-    this.mainSliderSwiperInstance = null;
-    this.modalSliderSwiperInstance = null;
-    this.initProductImageSlider();
-    this.initModalGallerySlider();
+    this.mainSliderSwiperInstance = null
+    this.modalSliderSwiperInstance = null
+    this.initProductImageSlider()
+    this.initModalGallerySlider()
   }
 
   async initProductImageSlider() {
-    const thumbsElem = document.querySelector(this.thumbsSliderSelector);
-    const galleryTopElem = document.querySelector(this.mainSliderSelector);
+    const thumbsElem = document.querySelector(this.thumbsSliderSelector)
+    const galleryTopElem = document.querySelector(this.mainSliderSelector)
 
     if (!thumbsElem && !galleryTopElem) {
-      return;
+      return
     }
 
     const galleryThumbs = new prestashop.SwiperSlider(thumbsElem, {
+      spaceBetween: 10, // <--- Añade aquí el espacio en píxeles (ej. 10px)
       breakpoints: {
         320: {
-          slidesPerView: 3,
+          slidesPerView: 4,
         },
         576: {
-          slidesPerView: 4,
+          slidesPerView: 6,
         },
       },
       watchSlidesVisibility: true,
       watchSlidesProgress: true,
-    });
+    })
 
-    const galleryThumbsInstance = await galleryThumbs.initSlider();
+    const galleryThumbsInstance = await galleryThumbs.initSlider()
 
     const mainSlider = new prestashop.SwiperSlider(galleryTopElem, {
       spaceBetween: 10,
@@ -52,50 +53,57 @@ class ProductGallery {
       thumbs: {
         swiper: galleryThumbsInstance,
       },
-    });
+    })
 
-    const mainSliderInstance = await mainSlider.initSlider();
+    const mainSliderInstance = await mainSlider.initSlider()
 
-    this.mainSliderSwiperInstance = mainSliderInstance;
+    this.mainSliderSwiperInstance = mainSliderInstance
   }
 
   initModalGallerySlider() {
-    const gallerySliderElem = document.querySelector(this.modalSliderSelector);
+    const gallerySliderElem = document.querySelector(this.modalSliderSelector)
 
     if (!gallerySliderElem) {
-      return;
+      return
     }
 
     const handleModalOpen = async () => {
       if (this.modalSliderSwiperInstance) {
-        gallerySliderElem.style.opacity = 0;
+        gallerySliderElem.style.opacity = 0
 
         // DIRTY HACK
         setTimeout(() => {
-          this.modalSliderSwiperInstance.update();
-          this.modalSliderSwiperInstance.slideTo(this.mainSliderSwiperInstance ? this.mainSliderSwiperInstance.activeIndex : 0, 0);
-          gallerySliderElem.style.opacity = 1;
-        }, 200);
+          this.modalSliderSwiperInstance.update()
+          this.modalSliderSwiperInstance.slideTo(
+            this.mainSliderSwiperInstance
+              ? this.mainSliderSwiperInstance.activeIndex
+              : 0,
+            0,
+          )
+          gallerySliderElem.style.opacity = 1
+        }, 200)
       } else {
         const modalSlider = new prestashop.SwiperSlider(gallerySliderElem, {
           slidesPerView: 1,
           spaceBetween: 10,
-          initialSlide: this.mainSliderSwiperInstance ? this.mainSliderSwiperInstance.activeIndex : 0,
+          initialSlide: this.mainSliderSwiperInstance
+            ? this.mainSliderSwiperInstance.activeIndex
+            : 0,
           navigation: {
             nextEl: gallerySliderElem.querySelector('.swiper-button-next'),
             prevEl: gallerySliderElem.querySelector('.swiper-button-prev'),
           },
-        });
+        })
 
-        const modalSliderInstance = await modalSlider.initSlider();
+        const modalSliderInstance = await modalSlider.initSlider()
 
-        this.modalSliderSwiperInstance = modalSliderInstance;
+        this.modalSliderSwiperInstance = modalSliderInstance
       }
-    };
+    }
 
     // TO REFACTO LATER WITH BS5 REMOVE JQUERY!
-    $(this.galleryModalSelector).on('show.bs.modal', handleModalOpen);
+    $(this.galleryModalSelector).on('show.bs.modal', handleModalOpen)
   }
 }
 
-export default ProductGallery;
+export default ProductGallery

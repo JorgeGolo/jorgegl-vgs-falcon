@@ -11,17 +11,28 @@
 .product-summary-info__item {
   display: flex;
   align-items: center;
-  justify-content: start; // centra el contenido dentro de su "columna"
+  justify-content: start;
   gap: 0.275rem;
-  flex: 1 1 0; // reparte el espacio a partes iguales entre los 3 items
-  padding-left: 1rem;
-  border-left: 1px solid $primary;
-  padding-top: 0.2rem;
-  padding-bottom: 0.2rem;
 
-  &:first-child {
-    padding-left: 0.5rem;
-    border-left: 0;
+  // MÓVIL: Ocupa el 100% de la fila y sin bordes laterales
+  flex: 1 1 100%;
+  padding-left: 0;
+  border-left: none;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+
+  // ESCRITORIO (a partir de md): Se reparte en 3 columnas con sus separadores
+  @include media-breakpoint-up(md) {
+    flex: 1 1 0;
+    padding-left: 1rem;
+    border-left: 1px solid $primary;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+
+    &:first-child {
+      padding-left: 0.5rem;
+      border-left: 0;
+    }
   }
 }
 .product-summary-info__label {

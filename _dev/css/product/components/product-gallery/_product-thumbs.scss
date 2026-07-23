@@ -1,15 +1,19 @@
-@use "sass:map";
+@use 'sass:map';
 
 .product-thumbs {
   margin-right: -#{map.get($spacers, 1)};
-  margin-left: -#{map.get($spacers, 1)};
 
   &__elem {
-    padding: 0 map.get($spacers, 1);
     cursor: pointer;
-    opacity: .3;
-    transition: .3s ease opacity;
     @include make-col(4);
+    // 1. BORDE BASE (para todas las miniaturas inactivas)
+    border: 1px solid rgba($primary, 0.3);
+    border-radius: $border-radius; // Opcional: para redondear las esquinas
+
+    // Reseteamos las propiedades de Bootstrap/Grid que fuerzan el 25%
+    flex: 0 0 auto !important;
+    max-width: none !important;
+    width: auto; // O 'width: 80px !important' si quieres fijar 80px exactos
 
     &:focus,
     &:hover {
@@ -18,6 +22,7 @@
 
     &.swiper-slide-thumb-active {
       opacity: 1;
+      border: 1px solid $primary;
     }
 
     @include media-breakpoint-up(sm) {

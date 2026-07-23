@@ -23,7 +23,7 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 {if $product.show_price}
-  <div class="product-prices js-product-prices mb-3">
+  <div class="product-prices js-product-prices mb-2">
 
     {block name='product_price'}
       <div class="product-price">

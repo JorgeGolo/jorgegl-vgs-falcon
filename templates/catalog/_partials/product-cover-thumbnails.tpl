@@ -142,7 +142,7 @@
 
     {block name='product_images'}
       {if $product.images|count > 1}
-        <div class="js-product-thumbs product-thumbs swiper mt-2 swiper-custom">
+        <div class="js-product-thumbs product-thumbs swiper mt-3 swiper-custom">
           {images_block webpEnabled=$webpEnabled}
             <div class="product-thumbs__list swiper-wrapper">
               <div class="product-thumbs__elem swiper-slide">

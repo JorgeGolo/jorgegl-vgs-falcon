@@ -1,12 +1,16 @@
 @use 'sass:map';
 
 .l-footer {
+  @include media-breakpoint-up(md) {
+  }
   padding-top: map.get($spacers, 5);
   margin-top: auto;
 }
 
 .footer-container {
-  padding-top: map.get($spacers, 5);
+  @include media-breakpoint-up(md) {
+    padding-top: map.get($spacers, 5);
+  }
   padding-bottom: map.get($spacers, 2);
   margin-top: map.get($spacers, 5);
   background: $primary;
