@@ -1,5 +1,8 @@
 .category-title-banner {
   background-color: $primary;
+  display: flex;
+  align-items: center;
+  min-height: 80px; /* Ajusta la altura que desees para el banner */
 
   .category-header-icon {
     display: flex;
