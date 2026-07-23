@@ -1,0 +1,91 @@
+.pagination {
+  gap: 0.3rem;
+}
+
+.pagination-summary {
+  @include font-size($font-size-sm);
+  font-weight: 500;
+}
+
+.page-item {
+  @include font-size($font-size-sm);
+  border-radius: 10px;
+  background: $secondary;
+
+  .page-link {
+    border-radius: inherit;
+    margin-left: 0;
+    background: transparent;
+    height: 40px;
+    min-width: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.75rem;
+    border: 1px solid $secondary;
+    color: $semi-light;
+    font-weight: 500;
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    // Modificador para el botón Anterior (Flecha a la izquierda)
+    &--prev {
+      gap: 0.5rem;
+      background-color: white;
+      color: $primary;
+
+      &::before {
+        content: '';
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        /* SVG inyectado en código */
+        background-image: url('../img/icons/arrow-left.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+      }
+    }
+
+    // Modificador para el botón Siguiente (Flecha a la derecha)
+    &--next {
+      gap: 0.5rem;
+      background-color: white;
+      color: $primary;
+
+      &::after {
+        content: '';
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url('../img/icons/arrow-right.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+      }
+    }
+  }
+
+  &.active .page-link {
+    z-index: 3;
+    color: white;
+    background: $primary;
+  }
+
+  &.disabled .page-link {
+    cursor: not-allowed;
+    background-color: $primary;
+  }
+
+  // Anulamos especificidad de Bootstrap para el primer y último elemento
+  &:first-child,
+  &:last-child {
+    .page-link {
+      border-radius: inherit;
+      @include border-radius(inherit);
+    }
+  }
+}

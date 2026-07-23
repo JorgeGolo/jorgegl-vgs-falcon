@@ -25,7 +25,7 @@
                   {* EVALUAMOS SI ES LA CATEGORÍA PADRE *}
                   {if $depth === 0 && ($node.page_identifier === 'category-2' || $node@first)}
                     <!-- Icono de hamburguesa de Material Icons -->
-                    <i class="material-icons mr-2">&#xE5D2;</i>
+                    <i class="material-icons mr-3">&#xE5D2;</i>
                     <span>{l s='Categorías' d='Shop.Theme.Catalog'}</span>
                   {else}
                     {$node.label}

@@ -48,6 +48,7 @@
   <section id="main">
 
     <div class="row product-container js-product-container">
+    
       <div class="col-md-5 mb-4">
         {block name='page_content_container'}
             {block name='page_content'}
@@ -61,6 +62,7 @@
             {/block}
         {/block}
         </div>
+        
         <div class="col-md-7 mb-4">
           {block name='page_header_container'}
             {block name='page_header'}
@@ -160,6 +162,7 @@
 
         </div>
       </div>
+   
     </div>
     {include file="catalog/_partials/product-tabs.tpl"}
 
