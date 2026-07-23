@@ -108,6 +108,13 @@ npm run watch           # o npm run dev (webpack-dev-server) durante desarrollo
 - Se ajustaron las thumbnails desde el swiper del Js
 - NO se ha maquetado el estilo de los filtros en mobile - simplemente no se muestran - se propone un menú desplegable encima de la cateogría, en incluso un icono flotante en el menú principal o en el top de la página
 
+## Algunas dificultades
+
+- Tomar la decisión correcta de qué archivo de \_dev/css css modificar, a qué nivel de carpeta: theme, producto, override...
+- Webpack y la precarga de fuentes, finalmente sólo se precarga una fuente, la principal
+- He tenido que traerme un fragmento de código Smarty del tema clásico, concretamente en la paginación, porque este tema no lo tenía
+- Cuadrar los márgenes y tamaños de los divs para duplicar exactamente el diseño de Figma
+
 ## ✅ Checklist de entregables (según enunciado)
 
 - [x] Repositorio Git público, solo carpeta del tema Falcon
