@@ -16,7 +16,7 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  * International Registered Trademark & Property of PrestaShop SA
  *}
-<div class="header-top__block header-top__block--cart flex-grow-0">
+<div class="header-top__block header-top__block--cart flex-grow-0 col">
   <div class="js-blockcart blockcart cart-preview dropdown" data-refresh-url="{$refresh_url}">
     <a href="#" role="button" id="cartDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
       class="header-top__link d-lg-block d-none">
@@ -33,12 +33,18 @@
         *}
       </div>
     </a>
-    <a href="{$cart_url}" class="d-flex d-lg-none header-top__link">
+    <a href="{$cart_url}" class="-flex d-lg-none header-top__link">
       <div class="header-top__icon-container">
-        <span class="header-top__icon material-icons"></span>
-        <span class="header-top__badge {if $cart.products_count > 9}header-top__badge--smaller{/if}">
+        {*
+        QUITAMOS material-icon Y AÑADIMOS CLASE QUE USAREMOS PARA PONER EL ICONO DE USUARIO
+        *}
+        <span class="header-top__icon header-top__icon--cart"></span>
+        {*
+        QUITAMOS EL BADGE
+          <span class="header-top__badge {if $cart.products_count > 9}header-top__badge--smaller{/if}">
           {$cart.products_count}
         </span>
+        *}
       </div>
     </a>
     <div class="dropdown-menu blockcart__dropdown cart-dropdown dropdown-menu-right" aria-labelledby="cartDropdown">

@@ -24,10 +24,6 @@
     text-decoration: none;
     border-radius: $border-radius;
 
-    @include media-breakpoint-up(sm) {
-      padding: map.get($spacers, 2);
-    }
-
     @include hover-focus() {
       color: $black;
       text-decoration: none;
@@ -43,8 +39,8 @@
 
   &__icon {
     display: block; // O inline-block
-    width: rem-calc(26px);
-    height: rem-calc(26px);
+    width: rem-calc(20px);
+    height: rem-calc(20px);
 
     @include media-breakpoint-up(sm) {
       width: rem-calc(17px);

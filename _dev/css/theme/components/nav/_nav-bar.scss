@@ -1,3 +1,10 @@
 .header-nav {
   background-color: $yellow;
+  @include font-size($font-size-base);
+  font-weight: 600;
+}
+
+#contact-link div {
+  min-height: 29px;
+  line-height: 29px; /* Forzará al texto a centrarse en los 29px de alto */
 }
