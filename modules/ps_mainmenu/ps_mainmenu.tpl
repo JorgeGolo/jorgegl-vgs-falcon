@@ -21,16 +21,16 @@
                   href="{$node.url}" data-depth="{$depth}"
                   {if $node.open_in_new_window} target="_blank" {/if}
                 >
-              <span class="align-self-center d-inline-flex align-items-center">
-                {* EVALUAMOS SI ES LA CATEGORÍA PADRE *}
-                {if $depth === 0 && ($node.page_identifier === 'category-2' || $node@first)}
-                  <!-- Icono de hamburguesa de Material Icons -->
-                  <i class="material-icons mr-2">&#xE5D2;</i>
-                  <span>{l s='Categorías' d='Shop.Theme.Catalog'}</span>
-                {else}
-                  {$node.label}
-                {/if}
-              </span>
+                <span class="align-self-center d-inline-flex align-items-center">
+                  {* EVALUAMOS SI ES LA CATEGORÍA PADRE *}
+                  {if $depth === 0 && ($node.page_identifier === 'category-2' || $node@first)}
+                    <!-- Icono de hamburguesa de Material Icons -->
+                    <i class="material-icons mr-2">&#xE5D2;</i>
+                    <span>{l s='Categorías' d='Shop.Theme.Catalog'}</span>
+                  {else}
+                    {$node.label}
+                  {/if}
+                </span>
                 </a>
                 {if $node.children|count}
                 {* Cannot use page identifier as we can have the same page several times *}

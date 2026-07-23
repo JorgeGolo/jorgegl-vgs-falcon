@@ -22,7 +22,7 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-<div class="col flex-grow-0 header-top__block header-top__block--user">
+<div class="flex-grow-0 header-top__block header-top__block--user">
   <a
     class="header-top__link"
     rel="nofollow"
@@ -33,8 +33,11 @@
       title="{l s='Log in to your customer account' d='Shop.Theme.Customeraccount'}"
     {/if}
   >
+  {*
+  QUITAMOS material-icon Y AÑADIMOS CLASE QUE USAREMOS PARA PONER EL ICONO DE USUARIO
+  *}
     <div class="header-top__icon-container">
-      <span class="header-top__icon material-icons">person</span>
+      <span class="header-top__icon header-top__icon--user"></span>
     </div>
   </a>
 </div>
