@@ -37,7 +37,7 @@
       >
       {include file='catalog/_partials/miniatures/_partials/product-thumb.tpl' thumbExtraClass='mb-2'}
 
-      <div class="product-miniature-container">
+      <div class="product-miniature-container bg-green-light">
 
         {include file='catalog/_partials/miniatures/_partials/product-title.tpl'}
 

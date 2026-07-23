@@ -2,6 +2,7 @@
   border-top: 1px solid $secondary;
   border-bottom: 0;
   padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 .card {
   // Estilos específicos cuando la tarjeta está en las columnas laterales
@@ -39,6 +40,9 @@
         padding-top: 1.5rem;
         padding-bottom: 1em;
         border-top: 1px solid $secondary;
+      }
+      &__block {
+        padding-top: 0;
       }
     }
 

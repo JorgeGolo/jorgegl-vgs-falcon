@@ -22,7 +22,7 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-<div id="js-product-list-header" class="category-header-fullwidth mb-4">
+<div id="js-product-list-header" class="category-header-fullwidth">
   {if $category.image.large.url}
     <div class="category-cover">
       <picture>

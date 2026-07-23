@@ -11,15 +11,18 @@
     width: fit-content;
     padding: map.get($spacers, 1) map.get($spacers, 2);
     margin-bottom: map.get($spacers, 2);
-    font-size: $font-size-sm;
+    font-size: $font-size-xs;
     text-transform: uppercase;
     font-weight: 500;
     line-height: 1.35;
     color: #fff;
     pointer-events: auto;
-    background: $primary;
-    margin-left: map.get($spacers, 1);
-    margin-top: map.get($spacers, 1);
+    margin-left: map.get($spacers, 2);
+    margin-top: map.get($spacers, 2);
+
+    &--new {
+      background: $primary;
+    }
 
     &--online-only {
       position: absolute;
@@ -27,7 +30,10 @@
       z-index: 1;
       margin-top: 0;
     }
-
+    &--out_of_stock {
+      background: $yellow;
+      color: $semi-light;
+    }
     &--discount-percentage,
     &--discount-amount,
     &--discount {

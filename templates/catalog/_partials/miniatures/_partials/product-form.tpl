@@ -22,9 +22,11 @@
           *}
       </form>
     {else}
+      {* COMENTADO BOTÓN VER
         <a href="{$product.canonical_url}"
            class="btn btn-secondary btn-block"
         > {l s='View' d='Shop.Theme.Actions'}
         </a>
+      *}
     {/if}
 </div>

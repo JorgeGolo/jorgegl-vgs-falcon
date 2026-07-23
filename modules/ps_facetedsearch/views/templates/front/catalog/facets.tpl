@@ -121,7 +121,7 @@
           {elseif $facet.widgetType == 'slider'}
             {block name='facet_item_slider'}
               {assign var="filter" value=$facet.filters.0}
-              <div class="py-1 pt-2">
+              <div>
                 <div id="facet_{$_expand_id}" class="search-filters__slider">
                   <div class="js-input-range-slider-container">
                     <div class="js-range-slider mt-1" 
