@@ -195,8 +195,8 @@ exports.preloadFonts = () => ({
     new FontPreloadPlugin({
       index: 'preload.html',
       extensions: ['woff2'],
-      filter:
-        /(materialicons|montserrat-v31-latin-regular|montserrat-v31-latin-700|montserrat-v31-latin-600|montserrat-v31-latin-500|icomoon)/i,
+      // Solo precargamos la fuente base imprescindible (regular)
+      filter: /montserrat-v31-latin-regular/i,
       replaceCallback: ({ indexSource, linksAsString }) => {
         return indexSource.replace('{{{preloadLinks}}}', linksAsString)
       },

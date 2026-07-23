@@ -47,7 +47,7 @@
 
   <section id="main">
 
-    <div class="row product-container js-product-container">
+    <div class="row product-container js-product-container mt-4">
     
       <div class="col-md-5 mb-4">
         {block name='page_content_container'}

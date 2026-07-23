@@ -4,6 +4,7 @@
   .product-miniature-container {
     background-color: $green-light;
     padding: 1em;
+    min-height: 117px;
   }
 
   $self: &;

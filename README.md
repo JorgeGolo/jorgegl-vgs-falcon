@@ -105,19 +105,8 @@ npm run watch           # o npm run dev (webpack-dev-server) durante desarrollo
 - Se han ajustado los tamaños y regenerado las imágenes home_default para ser más fieles al Figma
 - En el carrito, se ha comentado el badge de número de productos dentro del carrito
 - Se hizo un override del bootstrap del tema del estilo de la paginación
-
-## 🐛 Dificultades encontradas
-
-Surgieron problemas típicos durante la instalación, todos resueltos:
-
-1. **Extensiones nativas de Herd (Redis/MongoDB) como sospechosas de crash silencioso.** El `php.ini` de Herd trae por defecto extensiones para Redis y MongoDB, que no se usan en este proyecto. Se comentaron temporalmente para descartar incompatibilidades, ya que un HTTP 500 con `{"success":true,"message":""}` y sin log generado es típico de un crash de proceso (no de un error de PHP capturable).
-2. **`error_log` con ruta relativa.** El `php.ini` traía `error_log = php_errors.log` sin ruta absoluta, por lo que el log no se generaba donde se esperaba. Se corrigió a una ruta absoluta (`error_log = "C:\Users\jorge\php_errors.log"`), lo cual permitió finalmente capturar el error real.
-3. **Bug conocido del core de Prestashop 8.1.x en Windows: `Undefined constant "_DB_PREFIX_"` en `Configuration.php:175`.** Una vez visible el log, el error real durante el paso "Instalando tema" fue:
-   ```
-   PHP Fatal error: Uncaught Error: Undefined constant "_DB_PREFIX_" in classes\Configuration.php:175
-   ```
-   Se confirmó que es un **bug documentado del propio repositorio oficial de PrestaShop** ([issue #33717](https://github.com/PrestaShop/PrestaShop/issues/33717)), reportado repetidamente para instalaciones en Windows sobre PHP 8.x: código legado que trataba una constante no definida como si fuera un string (comportamiento válido en PHP 7, error fatal en PHP 8+). Es un fallo puntual de una petición interna del instalador (precompilación de Smarty) que no siempre bloquea el resto del proceso. Se resolvió reintentando la instalación (`?restart=true`), tras lo cual el proceso avanzó y completó correctamente.
-4. **Sitio en modo "mantenimiento" tras la instalación.** Comportamiento por defecto de Prestashop tras un install nuevo, no un error. Se desactivó desde el BO (Preferencias > Mantenimiento) tras iniciar sesión y eliminar la carpeta `/install` (paso de seguridad obligatorio post-instalación).
+- Se ajustaron las thumbnails desde el swiper del Js
+- NO se ha maquetado el estilo de los filtros en mobile - simplemente no se muestran - se propone un menú desplegable encima de la cateogría, en incluso un icono flotante en el menú principal o en el top de la página
 
 ## ✅ Checklist de entregables (según enunciado)
 
